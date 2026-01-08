@@ -1,12 +1,12 @@
 # Govt_Decode
 
-Govt_Decode is a web application that summarizes long government circulars
-and policy documents into short, easy-to-read formats.
+Govt_Decode is a web application that summarizes long government circulars and
+policy documents into short, readable formats.
 
 ## Features
-- Upload PDF or text
+- Upload PDF or text files
 - Automatic summarization
-- Simple web interface
+- Clean and simple interface
 - Designed for government circulars
 
 ## Tech Stack
@@ -15,9 +15,9 @@ and policy documents into short, easy-to-read formats.
 - Transformers (NLP)
 - HTML, CSS
 
-## How to Run
-1. Create virtual environment
+## How to Run Locally
+1. Create a virtual environment
 2. Install dependencies:
    pip install -r requirements.txt
-3. Run the app:
+3. Run the application:
    python app.py

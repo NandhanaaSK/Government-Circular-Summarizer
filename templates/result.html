@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summary Output</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>📄 Govt Decode</h2>
+    <p>Smart Govt Circular Summarizer</p>
+    <a href="/" class="back-btn">⬅ Back to Home</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <h1>Summary Output</h1>
+
+    <!-- CATEGORY BADGE -->
+    <div style="margin-bottom: 20px;">
+      <span class="badge">{{ category }}</span>
+    </div>
+
+    <!-- SUMMARY CARD -->
+    <div class="card">
+      <h3>📌 Summary</h3>
+
+      {% if summary_points %}
+      <ul class="summary-bullets">
+        {% for point in summary_points %}
+          <li>{{ point }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        <p>No summary available.</p>
+      {% endif %}
+    </div>
+
+    <!-- RECENT GOVERNMENT UPDATES -->
+    <h2 style="margin-top: 40px;">📰 Recent Government Updates</h2>
+
+    {% if updates %}
+    <div class="news-grid">
+      {% for item in updates %}
+      <div class="news-card">
+        <h3>{{ item.title }}</h3>
+        <p>
+          <small>{{ item.date }} | {{ item.category }}</small>
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p>No recent updates available.</p>
+    {% endif %}
+
+    <!-- TEXT TO SPEECH -->
+    <div class="tts-box">
+      <h3>🔊 Read Aloud Controls</h3>
+
+      <div class="tts-controls">
+        <button type="button" onclick="readSummary()">🔊 Read</button>
+        <button type="button" onclick="pauseSpeech()">⏸ Pause</button>
+        <button type="button" onclick="resumeSpeech()">▶️ Resume</button>
+        <button type="button" onclick="stopSpeech()">⏹ Stop</button>
+      </div>
+    </div>
+
+    <a href="/" class="back-btn">⬅ Generate Another</a>
+
+  </div>
+</div>
+
+<!-- TEXT TO SPEECH SCRIPT -->
+<script>
+  let speech;
+
+  function readSummary() {
+    const bullets = document.querySelectorAll(".summary-bullets li");
+    let text = "";
+
+    bullets.forEach(li => {
+      text += li.innerText + ". ";
+    });
+
+    if (!text.trim()) {
+      alert("No summary text to read.");
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+  }
+
+  function pauseSpeech() {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.pause();
+    }
+  }
+
+  function resumeSpeech() {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+    }
+  }
+
+  function stopSpeech() {
+    window.speechSynthesis.cancel();
+  }
+</script>
+
+</body>
+</html>

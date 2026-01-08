@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category }} Updates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>📄 Govt Decode</h2>
+        <p>Government Circular Summarizer</p>
+        <a href="/" class="back-btn">⬅ Back to Home</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <h1>{{ category }} – Government Updates</h1>
+
+        {% if news and news|length > 0 %}
+        <!-- NEWS FROM API -->
+        <div class="news-grid">
+            {% for item in news %}
+            <a href="{{ item.url }}" target="_blank" class="news-card">
+                <h3>{{ item.title }}</h3>
+                <p><b>Source:</b> {{ item.source }}</p>
+                <span class="read-more">🔗 Read Full News</span>
+            </a>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <h2>Important Information & Government Circulars</h2>
+
+        <div class="news-grid">
+
+        {% if category == "Education" %}
+            <!-- Education -->
+            <div class="news-card"><h3>🎓 NEP Implementation</h3><p>Curriculum reforms under NEP.</p></div>
+            <div class="news-card"><h3>📘 Digital Records</h3><p>Online certificates & marksheets.</p></div>
+            <div class="news-card"><h3>🎓 Scholarships</h3><p>Government scholarship portals.</p></div>
+            <div class="news-card"><h3>🛠 Skill Development</h3><p>Vocational training programs.</p></div>
+            <div class="news-card"><h3>💻 Online Learning</h3><p>Hybrid learning encouraged.</p></div>
+            <div class="news-card"><h3>👩‍🏫 Teacher Training</h3><p>Mandatory teacher upskilling.</p></div>
+
+            <div class="news-card"><h3>📄 Exam Reform</h3><p>Competency‑based evaluation.</p></div>
+            <div class="news-card"><h3>📄 Infrastructure Norms</h3><p>Minimum school standards.</p></div>
+            <div class="news-card"><h3>📄 Academic Autonomy</h3><p>Autonomy for institutions.</p></div>
+            <div class="news-card"><h3>📄 Digital Classrooms</h3><p>Smart classroom rollout.</p></div>
+            <div class="news-card"><h3>📄 Inclusive Education</h3><p>Support for special needs.</p></div>
+            <div class="news-card"><h3>📄 Credit Framework</h3><p>National credit transfer.</p></div>
+
+        {% elif category == "Health" %}
+            <!-- Health -->
+            <div class="news-card"><h3>🏥 Health Insurance</h3><p>Subsidized treatment schemes.</p></div>
+            <div class="news-card"><h3>📱 Tele‑medicine</h3><p>Online doctor consultation.</p></div>
+            <div class="news-card"><h3>💊 Generic Medicines</h3><p>Low‑cost medicines.</p></div>
+            <div class="news-card"><h3>👶 Public Health</h3><p>Maternal & child care.</p></div>
+            <div class="news-card"><h3>🗂 Digital Health ID</h3><p>Electronic health records.</p></div>
+            <div class="news-card"><h3>🚑 Emergency Care</h3><p>Emergency response rules.</p></div>
+
+            <div class="news-card"><h3>📄 Hospital Safety</h3><p>Mandatory audits.</p></div>
+            <div class="news-card"><h3>📄 Vaccination Drive</h3><p>Expanded immunization.</p></div>
+            <div class="news-card"><h3>📄 Mental Health</h3><p>Standard care protocols.</p></div>
+            <div class="news-card"><h3>📄 Disease Surveillance</h3><p>Mandatory reporting.</p></div>
+            <div class="news-card"><h3>📄 Staff Training</h3><p>Medical workforce training.</p></div>
+            <div class="news-card"><h3>📄 Nutrition Mission</h3><p>Improved nutrition programs.</p></div>
+
+        {% elif category == "Finance" %}
+            <!-- Finance -->
+            <div class="news-card"><h3>💰 Income Tax Filing</h3><p>Online filing deadlines.</p></div>
+            <div class="news-card"><h3>🏦 DBT</h3><p>Direct benefit transfers.</p></div>
+            <div class="news-card"><h3>📲 Digital Payments</h3><p>Secure & cashless.</p></div>
+            <div class="news-card"><h3>🌍 Financial Inclusion</h3><p>Banking access.</p></div>
+            <div class="news-card"><h3>👴 Pension Schemes</h3><p>Social security.</p></div>
+            <div class="news-card"><h3>💻 Online Banking</h3><p>Paperless services.</p></div>
+
+            <div class="news-card"><h3>📄 GST Compliance</h3><p>Updated GST rules.</p></div>
+            <div class="news-card"><h3>📄 Budget Guidelines</h3><p>Fund utilization.</p></div>
+            <div class="news-card"><h3>📄 MSME Credit</h3><p>Small business loans.</p></div>
+            <div class="news-card"><h3>📄 Digital Lending</h3><p>Online lending norms.</p></div>
+            <div class="news-card"><h3>📄 Financial Literacy</h3><p>Citizen awareness.</p></div>
+            <div class="news-card"><h3>📄 Pension Reform</h3><p>Revised pension rules.</p></div>
+
+        {% elif category == "Legal" %}
+            <!-- Legal -->
+            <div class="news-card"><h3>⚖️ Legal Awareness</h3><p>Citizen legal literacy.</p></div>
+            <div class="news-card"><h3>🆓 Free Legal Aid</h3><p>Legal help schemes.</p></div>
+            <div class="news-card"><h3>🧑‍⚖️ Digital Courts</h3><p>Online case access.</p></div>
+            <div class="news-card"><h3>📢 Grievance Redressal</h3><p>Online complaints.</p></div>
+            <div class="news-card"><h3>📜 New Laws</h3><p>Law amendments.</p></div>
+            <div class="news-card"><h3>🤝 Lok Adalat</h3><p>Dispute resolution.</p></div>
+
+            <div class="news-card"><h3>📄 Criminal Law</h3><p>Procedure updates.</p></div>
+            <div class="news-card"><h3>📄 Cyber Law</h3><p>Cyber crime rules.</p></div>
+            <div class="news-card"><h3>📄 Consumer Protection</h3><p>Consumer rights.</p></div>
+            <div class="news-card"><h3>📄 RTI Filing</h3><p>Online RTI norms.</p></div>
+            <div class="news-card"><h3>📄 Case Management</h3><p>Time‑bound disposal.</p></div>
+            <div class="news-card"><h3>📄 Mediation Rules</h3><p>Mediation services.</p></div>
+
+        
+        {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- NEWS CHANNELS -->
+        <h2 style="margin-top:40px;">Indian News Channels</h2>
+        <div class="news-grid">
+            <a href="https://ddnews.gov.in/" target="_blank" class="news-card"><h3>DD News</h3><p>Hindi, English</p></a>
+            <a href="https://pib.gov.in/" target="_blank" class="news-card"><h3>PIB India</h3><p>Multiple Languages</p></a>
+            <a href="https://www.ndtv.com/india" target="_blank" class="news-card"><h3>NDTV India</h3><p>Hindi, English</p></a>
+            <a href="https://www.thehindu.com/news/national/" target="_blank" class="news-card"><h3>The Hindu</h3><p>English</p></a>
+            <a href="https://www.puthiyathalaimurai.com/" target="_blank" class="news-card"><h3>Puthiya Thalaimurai</h3><p>Tamil</p></a>
+            <a href="https://www.polimernews.com/" target="_blank" class="news-card"><h3>Polimer News</h3><p>Tamil</p></a>
+            <a href="https://news.sunnetwork.in/" target="_blank" class="news-card"><h3>Sun News</h3><p>Tamil</p></a>
+            <a href="https://www.dinamani.com/" target="_blank" class="news-card"><h3>Dinamani</h3><p>Tamil</p></a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

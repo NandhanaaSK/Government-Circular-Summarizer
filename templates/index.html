@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Government Circular Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>📄 Govt Decode  </h2>
+            <p>Smart Govt Circular Summarizer</p>
+            <ul>
+                <li>
+                    <a href="/category/education" target="_blank">🎓 Education</a>
+                </li>
+                <li>
+                    <a href="/category/health" target="_blank">🏥 Health</a>
+                </li>
+                <li>
+                    <a href="/category/finance" target="_blank">💰 Finance</a>
+                </li>
+                <li>
+                    <a href="/category/legal" target="_blank">⚖️ Legal</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+
+            <h1>Upload Government Circular</h1>
+
+            <div class="card">
+
+                <form action="/summarize" method="post" enctype="multipart/form-data">
+
+                    <!-- Upload PDF -->
+                    <label>📤 Upload PDF</label>
+                    <input type="file" name="file">
+
+                    <p style="text-align:center; margin:10px 0;"><b>OR</b></p>
+
+                    <!-- Paste Text -->
+                    <label>📝 Paste Circular Text</label>
+                    <textarea name="pasted_text" placeholder="Paste government circular text here..."></textarea>
+
+                    <!-- Summary Length -->
+                    <label>📏 Summary Length</label>
+                    <select name="length">
+                        <option value="short">Short</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="long">Detailed</option>
+                    </select>
+
+                    <!-- Submit -->
+                    <button type="submit" class="primary-btn">
+                        ✨ Generate Summary
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
