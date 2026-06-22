@@ -1,8 +1,8 @@
-# 📄 Govt Decode
+# 📄 Government Circular Summarizer
 
-### Government Circular Summarizer
 
-Govt Decode is an AI-powered web application that transforms lengthy government circulars, notifications, and policy documents into concise, easy-to-understand summaries. It helps citizens, students, professionals, and administrators quickly grasp key information without reading entire documents.
+
+Government Circular Summarizer is an AI-powered web application that transforms lengthy government circulars, notifications, and policy documents into concise, easy-to-understand summaries. It helps citizens, students, professionals, and administrators quickly grasp key information without reading entire documents.
 
 ---
 
